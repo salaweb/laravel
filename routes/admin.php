@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\PostAdminController;
+use App\Http\Controllers\admin\CategoryAdminController;
 
 
 
 Route::resource('/post', PostAdminController::class);
+Route::resource('/category', CategoryAdminController::class);
 
 
 //Route::get('/post', [PostAdminController::class,'index']);
