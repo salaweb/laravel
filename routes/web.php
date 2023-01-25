@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\PostAdminController;
+use App\Http\Controllers\Admin\CategoryAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 
+//Dashboard
+Route::group([
+    
+    'prefix' => 'dashboard', 
+    'middleware' => 'auth'
+    ], 
+    
+    function(){
+        Route::resources([
+            'post' => PostAdminController::class,
+            'category' => CategoryAdminController::class,
+        ]);    
+    }
+);
 
+
+require __DIR__.'/auth.php';

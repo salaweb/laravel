@@ -20,7 +20,7 @@
     
         @include('admin.category._form')
     
-        <button type="submit">enviar</button>
+        <button class="btn btn-success my-2"type="submit">enviar</button>
     </form>
 
 

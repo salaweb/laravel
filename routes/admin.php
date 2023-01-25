@@ -7,8 +7,15 @@ use App\Http\Controllers\admin\CategoryAdminController;
 
 
 
-Route::resource('/post', PostAdminController::class);
-Route::resource('/category', CategoryAdminController::class);
+
+// Route::group(['prefix' => 'dashboard'], function(){
+    
+//     Route::resource('/post', PostAdminController::class);
+//     Route::resource('/category', CategoryAdminController::class);
+
+// });
+
+
 
 
 //Route::get('/post', [PostAdminController::class,'index']);

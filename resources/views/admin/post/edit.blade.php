@@ -20,7 +20,7 @@
     
         @include('admin.post._form')
     
-        <button type="submit">enviar</button>
+        <button class="btn btn-success" type="submit">enviar</button>
     </form>
 
 

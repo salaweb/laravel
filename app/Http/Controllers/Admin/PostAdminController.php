@@ -19,6 +19,8 @@ class PostAdminController extends Controller
     public function index()
     {
         $posts = Post::paginate(2);
+
+        //dd($posts);
         return view('admin.post.index', compact('posts'));
     }
 

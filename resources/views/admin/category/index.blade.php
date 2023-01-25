@@ -2,16 +2,8 @@
 
 @section('content')
 
-    <a href="{{ route('category.create') }}">Crear</a>   
-    
-    
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    <a class="btn btn-success my-3" href="{{ route('category.create') }}">Crear</a>
 
-    
 
     <table class="table table-primary table-striped table-hover table-bordered table-sm table-responsive-sm">
         <thead>
@@ -24,29 +16,28 @@
             @foreach ($categories as $c)
                 
             <tr>
-                <th scope="row">{{ $c->title }}</th>
-                <td></td>                
+                <td scope="row">{{ $c->title }}</td>                               
                 <td>
-                    <a href="{{ route('category.edit', $c->id) }}">Edita</a>
-                    <a href="{{ route('category.show', $c->id) }}">Mostra</a>
+                    <a class="btn btn-primary my-2" href="{{ route('category.edit', $c->id) }}">Edita</a>
+                    <a class="btn btn-primary my-2" href="{{ route('category.show', $c->id) }}">Mostra</a>
                     <form action="{{ route('category.destroy', $c->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         
-                        <button type="submit">Eliminar</button>
+                        <button class="btn btn-danger my-2" type="submit">Eliminar</button>
                     </form>
                 </td>
             </tr>
             @endforeach
             <tr>
-                <th scope="row"></th>
+                <td scope="row"></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                
             </tr>
         </tbody>
     </table>
 
-  
+    {{ $categories->links() }}
+ 
 
 @endsection
