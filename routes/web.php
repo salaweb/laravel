@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::group([
     
     'prefix' => 'dashboard', 
-    'middleware' => 'auth'
+    'middleware' => ['auth', 'admin']
     ], 
     
     function(){
