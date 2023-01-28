@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 
+use App\Http\Controllers\Web\BlogWebController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +47,17 @@ Route::group([
         ]);    
     }
 );
+
+//Dashboard
+Route::group(['prefix' => 'post'], function(){
+
+    Route::controller(BlogWebController::class)->group(function(){
+
+        Route::get('/','index')->name("web.blog.index");
+        Route::get('/{post}','show')->name("web.blog.show");
+
+    });     
+});
 
 
 require __DIR__.'/auth.php';
