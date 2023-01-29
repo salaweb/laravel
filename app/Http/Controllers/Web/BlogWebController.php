@@ -11,7 +11,7 @@ class BlogWebController extends Controller
     public function index()
     {
 
-        $posts = Post::where("posted", "yes")->paginate(1);
+        $posts = Post::where("posted", "yes")->paginate(10);
         return view('web.blog.index', compact('posts'));
 
     }
